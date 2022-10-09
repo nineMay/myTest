@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择框</title>
+        <!-- angularjs包 -->
+        <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+
+</head>
+<body>
+
+    <!-- 1.使用ng-options创建选择框[注意此处的ng-options="x for x in names"]
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <select ng-init="selectedName=names[0]" ng-model="selectedName" ng-options="x for x in names"></select>
+    </div> -->
+
+    2.使用ng-repeat创建下拉列表
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <select>
+            <option ng-repeat="x in names">{{x}}</option>
+        </select>
+    </div>
+
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope){
+            $scope.names=['Google','Runoob','Taobao'];
+        });
+
+    // 3.总结：ng-repeat有局限性，选择的值是一个字符串，而ng-options 使用选择的是一个对象
+    </script>
+    
+</body>
+</html>

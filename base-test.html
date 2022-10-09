@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础练习</title>
+    <!-- angularjs包 -->
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <!-- ng-app指令定义一个Angularjs应用程序 -->
+   <div ng-app="">
+    <!-- ng-model指令把元素值（比如输入域的值）绑定到应用程序 -->
+    <p>名字：<input type="text" ng-model="name"/></p>
+        <h1>hello{{name}}</h1>
+        <!-- ng-bind指令把应用程序数据绑定到HTML视图 -->
+        <p ng-bind="name"></p>
+   </div>
+</body>
+</html>

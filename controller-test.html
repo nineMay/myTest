@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制器练习</title>
+      <!-- angularjs包 -->
+      <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <p>尝试修改以下表单。</p>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        名：<input type="text" ng-model="firstName"><br>
+        姓：<input type="text" ng-model="lastName"><br>
+        姓名：{{firstName+" "+lastName}}
+    </div>
+    <script>
+        // angularjs模块定义应用
+        var app=angular.module('myApp',[]);
+        // 控制器控制应用
+        app.controller('myCtrl',function($scope){
+            $scope.firstName="Jhon";
+            $scope.lastName="Dee";
+        });
+
+</script>
+<!-- /* 或外部文件控制器*/
+// <script src="personController.js"></script> -->
+<!-- personController.js文件内容为： angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.firstName="Jhon";
+    $scope.lastName="Dee";
+}); -->
+</body>
+</html>

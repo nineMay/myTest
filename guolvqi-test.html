@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器，相当于管道，用于转换数据</title>
+        <!-- angularjs包 -->
+        <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+
+</head>
+<body>
+<!-- angularjs过滤器有：
+currency	格式化数字为货币格式。
+filter	从数组项中选择一个子集。
+lowercase	格式化字符串为小写。
+orderBy	根据某个表达式排列数组。
+uppercase	格式化字符串为大写。 -->
+
+<!-- 1.使用过滤器
+   <div ng-app="" >
+
+    <input type="number" ng-model="quantity">
+    <input type="number" ng-model="price">
+    <p>总价 = {{ (quantity * price) | currency }}</p>
+    </div> -->
+
+    <!-- 2.向指令添加过滤器
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <ul>
+            <li ng-repeat="x in names|orderBy:'country'">{{x.name+','+x.country}}</li>
+        </ul>
+    </div>
+<script>
+        var app=angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope){
+            $scope.names=[
+            {name:'ni',country:'Oman'},
+                {name:'mi',country:'China'},
+            
+        ]
+        }); 
+
+    </script> -->
+
+    3.过滤输入(与搜索类似)
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p><input type="text" ng-model="test"></p>
+        <ul>
+            <li ng-repeat="x in names | filter:test|orderBy:'country'">
+                {{(x.name|uppercase)+','+x.country}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope){
+            $scope.names=[
+            {name:'ni',country:'Oman'},
+                {name:'mi',country:'China'},
+            
+        ]
+        }); 
+
+    </script>
+    
+    <!-- 4.自定义过滤器(如：reverse，将字符串反转)
+
+    <div ng-app="myApp" ng-controller="myCtrl" ng-init="test=' '">
+        <p><input type="text" ng-model="test"></p>
+        <span>{{test | reverse}}</span>
+        </div>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.msg="Runoob";
+    });
+    app.filter('reverse',function(){
+        //可以注入依赖
+        return function(text){
+            return text.split("").reverse().join("");
+        }
+    });
+</script> -->
+    </body>
+</html>
